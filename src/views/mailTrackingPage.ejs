@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/mainPage.css">
+  <title>praćenje pošiljke</title>
+</head>
+<body>
+  <h1>praćenje pošiljke</h1>
+
+  <p>Potrebno je upisati kod za praćenje pošiljke kako bi se prikazali detalji o toj pošiljci.</p>
+  <p>Primjer ispravnog koda za praćenje pošiljke:<strong>GLS123456</strong></p>
+  <p>Za demonstraciju jednog od načina iskorištavanja ranjivosti SQL umetanja potrebno je omogućiti ranjivost te u prozor za pretraživanje unijeti: <strong>' OR 1=1;--</strong> </p>
+    <form action="/trackMail" method="post">
+        <label for="trackingId">unesi kod za praćenje: </label>
+        <input type="text" id="trackingId" name="trackingId" required>
+        <label>
+            <input type="checkbox" name="enableInjection" value="on"> omogući ranjivost - SQL umetanje
+        </label>
+        <button type="submit">pretraži</button>
+    </form>
+</body>
+</html>

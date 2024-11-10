@@ -7,21 +7,17 @@
 </head>
 <body>
     <h1>dobrodošli, <%= username %> </h1>
-
+    <div class = "container">
+        <p>Za demonstraciju ranjivost loše autentifikacije potrebno je isključiti opciju sigurne odjave te pritisnuti gumb za odjavu. </p>
+        <p>Gumb za odjavu će korisnika preusmjeriti na početnu stranicu, a kako bi iskoristili ranjivost potrebno je pritisnuti gumb za nazad kako bi se vratili na stranicu s osjetljivim podacima (/protected).</p>
+     </div>
     <form action="/logout-switch" method="post">
         <label>
             <input type="checkbox" name="sigurnaOdjava" id="sigurnaOdjava"> sigurna odjava
         </label>
         <button type="submit">odjava</button>
     </form>
-    <script>
-        document.getElementById('sigurnaOdjava').addEventListener('change', (event) => {
-            if (event.target.checked) {
-                alert("ranjivost je isključena");
-            } else {
-                alert("ranjivost je uključena");
-            }
-        });
-      </script>
+
+    <a href="/">povratak na početnu stranicu</a>
 </body>
 </html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/mainPage.css">
+  <title>informacije</title>
+</head>
+<body>
+    <h1>rezultati pretrage pošiljke</h1>
+
+    <% if (mails && mails.length > 0) { %>
+        <ul>
+            <% mails.forEach(mail => { %>
+                <li class = "list">
+                    <div>
+                        <strong>ID praćenja:</strong><p><%= mail.trackingId %></p> <br>
+                    </div>
+                    <div>
+                        <strong>status:</strong><p> <%= mail.status %></p> <br>
+                    </div>
+                    <div>
+                        <strong>kurir:</strong><p> <%= mail.carrier %></p> <br>
+                    </div>
+                    <div>
+                        <strong>poveznica za praćenje:</strong> <p><a href="<%= mail.carrierTrackingUrl %>" target="_blank"><%= mail.carrierTrackingUrl %></a></p><br>
+                    </div>
+                    <div>
+                        <strong>datum praćenja:</strong> <p> <%= mail.trackingDate %></p> <br>
+                    </div>
+                    <div>
+                        <strong>datum promjene statusa:</strong> <p> <%= mail.statusChangeDate %></p> <br>
+                    </div>
+                    <div>
+                        <strong>razlog promjene statusa:</strong> <p> <%= mail.statusChangeReason %></p> <br>
+                    </div>
+                    <div>
+                        <strong>težina:</strong><p><%= mail.weight %>g</p> <br>
+                    </div>
+                    <div>
+                        <strong>procijenjeni datum dostave:</strong> <p> <%= mail.estimatedDeliveryDate %></p> <br>
+                    </div>
+                    <div>
+                        <strong>adresa pošiljatelja:</strong> <p><%= mail.addressFrom_streetNr %> <%= mail.addressFrom_streetName %>, <%= mail.addressFrom_postcode %> <%= mail.addressFrom_city %>, <%= mail.addressFrom_country %><br>
+                    </div>
+                    <div>
+                        <strong>adresa primatelja:</strong> <p><%= mail.addressTo_streetNr %> <%= mail.addressTo_streetName %>, <%= mail.addressTo_postcode %> <%= mail.addressTo_city %>, <%= mail.addressTo_country %><br>
+                    </div>
+
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>nije pronađena pošiljka za navedeni kod </p>
+    <% } %>
+
+    <a href="/">povratak na početnu stranicu</a>
+</body>
+</html>
