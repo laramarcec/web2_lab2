@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/mainPage.css">
+</head>
+<body>
+    <h1>dobrodošli, <%= username %> </h1>
+
+    <form action="/logout-switch" method="post">
+        <label>
+            <input type="checkbox" name="sigurnaOdjava" id="sigurnaOdjava"> sigurna odjava
+        </label>
+        <button type="submit">odjava</button>
+    </form>
+    <script>
+        document.getElementById('sigurnaOdjava').addEventListener('change', (event) => {
+            if (event.target.checked) {
+                alert("ranjivost je isključena");
+            } else {
+                alert("ranjivost je uključena");
+            }
+        });
+      </script>
+</body>
+</html>

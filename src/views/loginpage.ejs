@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/mainPage.css">
+  <title>prijava</title>
+</head>
+<body>
+  <h1>prijava</h1>
+
+  <form action="/login" method="POST">
+    <div class = "username-input"> 
+      <label for="username">korisničko ime:</label>
+      <input type="text" id="username" name="username" required>
+    </div>
+    
+    <div class = "password">
+      <label for="password">lozinka: <label>
+      <input type="password" id="password" name="password" required>
+    </div>
+    
+    <button type="submit">prijavi se</button>
+  </form>
+
+</body>
+</html>
