@@ -3,11 +3,15 @@ const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 const { Pool } = require('pg');
 const cookieParser = require('cookie-parser');
-
-const app = express();
-const PORT = 3000;
+const https = require('https');
+const fs = require('fs');
 
 require('dotenv').config();
+
+const app = express();
+const externalUrl = process.env.RENDER_EXTERNAL_URL;
+const port = externalUrl && process.env.PORT ? parseInt(process.env.PORT) : 4080; 
+
 
 app.use(express.urlencoded({ extended: true })); 
 app.use(express.json());
@@ -159,9 +163,21 @@ app.get('/', async (req, res) =>  {
     
 });
 
-app.listen(PORT, () => {
-    console.log('server radi');
-})
+if (externalUrl) {   
+    const hostname = '0.0.0.0'; 
+    app.listen(port, hostname, () => {     
+        console.log(`Server locally running at http://${hostname}:${port}/ and from outside on ${externalUrl}`);   
+});
+} 
+else {  
+   https.createServer({ 
+        key: fs.readFileSync('server.key'), 
+        cert: fs.readFileSync('server.cert') 
+    }, app) 
+    .listen(port, function () {
+        console.log(`Server running at https://localhost:${port}/`);
+}); 
+}
 
 
 async function checkSession(req, res, next) {
